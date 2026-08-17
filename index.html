@@ -971,7 +971,7 @@
 
             <a
               class="button secondary"
-              href="#"
+              href="#database-narrative"
             >
               Enhancement Narrative
             </a>
@@ -979,6 +979,239 @@
         </article>
       </div>
     </section>
+
+    <section id="database-narrative" class="section-card">
+  <h2>Database Enhancement Narrative</h2>
+
+  <h3>Artifact Description</h3>
+
+  <p>
+    Travlr Getaways is a full-stack MEAN application that uses MongoDB for
+    data storage, Express and Node.js for the server and REST API, and Angular
+    for the administrative interface.
+  </p>
+
+  <p>
+    The application stores information about available travel packages and
+    allows authenticated administrators to add, view, edit, and delete trip
+    information.
+  </p>
+
+  <p>
+    I selected Travlr Getaways for this database enhancement because the
+    application already contained a functional connection between MongoDB and
+    the rest of the application. This provided a strong foundation for
+    demonstrating more advanced database skills.
+  </p>
+
+  <p>
+    The original application primarily used MongoDB to support CRUD
+    operations. For this enhancement, I expanded the role of the database by
+    strengthening data validation and using MongoDB aggregation to transform
+    stored trip data into useful administrative information.
+  </p>
+
+  <h3>Justification for Inclusion</h3>
+
+  <p>
+    I selected this artifact because it demonstrates how database development
+    fits into a complete software system rather than existing as an isolated
+    component.
+  </p>
+
+  <p>
+    The application connects MongoDB to a Mongoose data model, Express
+    controllers and routes, a REST API, and an Angular administrative
+    interface. This demonstrates my ability to work with data across multiple
+    layers of a full-stack application.
+  </p>
+
+  <p>
+    One major part of the enhancement involved strengthening the Mongoose trip
+    schema. I added validation rules and constraints to the fields used by trip
+    documents. These changes help prevent invalid or incomplete information
+    from reaching the database and improve the consistency of stored records.
+  </p>
+
+  <p>
+    I tested the validation rules by attempting to submit values that did not
+    meet the established requirements and confirmed that invalid information
+    was rejected with appropriate error handling.
+  </p>
+
+  <h3>MongoDB Aggregation and Reporting</h3>
+
+  <p>
+    I also created a database-driven reporting feature using the MongoDB
+    Aggregation Framework.
+  </p>
+
+  <p>The aggregation pipeline processes the trip collection to calculate:</p>
+
+  <ul>
+    <li>Total number of trips</li>
+    <li>Average trip price</li>
+    <li>Average trip duration</li>
+  </ul>
+
+  <p>
+    Because some values in the original application were stored as formatted
+    strings, the pipeline performs string processing and data conversion before
+    calculating the statistics.
+  </p>
+
+  <p>
+    A second aggregation groups trips by resort and counts the number of trips
+    associated with each resort.
+  </p>
+
+  <p>
+    The aggregation results are exposed through a new Express API endpoint. I
+    then integrated this endpoint into the Angular administrative application
+    through the trip data service and created a Trip Report interface.
+  </p>
+
+  <p>
+    The report presents the total number of trips, average price, average
+    duration, and trips grouped by resort in a readable administrative
+    dashboard. Navigation was also added between the main trip listing and the
+    report.
+  </p>
+
+  <p>
+    This enhancement demonstrates a complete flow from stored MongoDB data,
+    through server-side processing and a REST API, to information presented to
+    the end user.
+  </p>
+
+  <h3>Skills and Course Outcomes</h3>
+
+  <p>
+    This enhancement demonstrates the use of modern database and full-stack
+    development techniques to create functionality that provides practical
+    value to users.
+  </p>
+
+  <p>
+    The strongest alignment is with the outcome involving the use of
+    well-founded computing techniques and tools to implement solutions that
+    deliver value. MongoDB, Mongoose, Express, Node.js, and Angular work
+    together to create a reporting feature that provides administrators with
+    useful information about available trip data.
+  </p>
+
+  <p>
+    The enhancement also demonstrates computing-solution design through the
+    aggregation pipeline. The pipeline required multiple processing stages,
+    including data conversion, grouping, averaging, sorting, and projection.
+    I had to evaluate how the original data was represented and determine how
+    it needed to be transformed before calculations could be performed.
+  </p>
+
+  <p>
+    A security-focused development mindset is also demonstrated through
+    stronger schema validation and controlled administrative access. Improved
+    validation helps protect data integrity by limiting the types of values
+    that can enter the database, while JWT authentication continues to protect
+    administrative operations.
+  </p>
+
+  <p>
+    The Trip Report also demonstrates professional communication by presenting
+    database-generated information in a clear and usable format for an
+    administrative user rather than exposing only raw API output.
+  </p>
+
+  <h3>Reflection</h3>
+
+  <p>
+    Enhancing Travlr Getaways helped me better understand the role a database
+    can play within a full-stack application.
+  </p>
+
+  <p>
+    In the original project, I primarily viewed MongoDB as the location where
+    the application stored and retrieved trip records. Through this
+    enhancement, I learned how the database can also perform meaningful
+    processing and generate information that supports application features.
+  </p>
+
+  <p>
+    One of the most valuable parts of the enhancement was working with MongoDB
+    aggregation. I learned how multiple stages of an aggregation pipeline can
+    work together to transform documents into useful results. The pipeline
+    converts formatted price and duration values into numeric data, calculates
+    averages, groups documents, sorts results, and controls the final output.
+  </p>
+
+  <p>
+    This showed me that processing data directly within the database can
+    sometimes be more appropriate than retrieving every document and
+    performing all calculations in the application layer.
+  </p>
+
+  <p>
+    One challenge involved the structure of the original data. Values such as
+    price and trip duration were designed primarily for display and stored as
+    formatted strings. This made calculating averages more complicated because
+    the aggregation pipeline first had to extract or convert numeric values.
+  </p>
+
+  <p>
+    Working through this issue helped me recognize an important database design
+    trade-off. A structure that is convenient for presentation is not always
+    ideal for querying and analysis. If I were designing the database again
+    from the beginning, I would consider storing numeric price and duration
+    values separately from their formatted display values.
+  </p>
+
+  <p>
+    I also encountered challenges while connecting the aggregation
+    functionality to the Express routing and controller system. Problems
+    involving route ordering, controller exports, and aggregation syntax
+    required me to trace requests through several layers of the application.
+  </p>
+
+  <p>
+    Resolving those issues strengthened my understanding of how the Angular
+    client, Express API, Mongoose model, and MongoDB database communicate.
+  </p>
+
+  <p>
+    Finally, creating the Angular Trip Report reinforced the idea that database
+    functionality should ultimately provide value to the user. Rather than
+    leaving the aggregation results as raw JSON from an API endpoint, I
+    integrated the results into the administrative interface.
+  </p>
+
+  <p>
+    Seeing statistics generated in MongoDB and displayed in the application
+    connected the database concepts to the larger purpose of the software.
+  </p>
+
+  <p>
+    Overall, this enhancement significantly improved the original Travlr
+    Getaways application. It now demonstrates stronger database validation,
+    data integrity, aggregation and reporting, REST API integration, and
+    full-stack communication.
+  </p>
+
+  <p>
+    More importantly, the enhancement reflects my growth from thinking of a
+    database as simply a place to store application data to understanding how
+    databases can validate, process, analyze, and communicate information
+    effectively.
+  </p>
+
+  <div class="button-group">
+    <a
+      class="button secondary"
+      href="#databases"
+    >
+      Back to Databases
+    </a>
+  </div>
+</section>
 
     <section class="section-card">
       <h2>Technical Skills</h2>
