@@ -726,7 +726,7 @@
 
             <a
               class="button secondary"
-              href="#"
+              href="#algorithms-narrative"
             >
               Enhancement Narrative
             </a>
@@ -734,6 +734,212 @@
         </article>
       </div>
     </section>
+
+    <section id="algorithms-narrative" class="section-card">
+  <h2>Algorithms and Data Structures Enhancement Narrative</h2>
+
+  <h3>Artifact Description</h3>
+
+  <p>
+    The Left Center Right (LCR) Dice Game is a console-based C++
+    implementation of the multiplayer dice game. It supports three or more
+    players who take turns rolling dice and transferring chips until only one
+    player has chips remaining.
+  </p>
+
+  <p>
+    The original application demonstrates object-oriented programming through
+    separate Player and Dice classes while using vectors, loops, conditional
+    logic, random number generation, and file input to manage gameplay.
+    Although the original version worked as a single-game simulation, it did
+    not preserve information across multiple games or provide a way to analyze
+    player performance over time.
+  </p>
+
+  <h3>Justification for Inclusion</h3>
+
+  <p>
+    I selected this artifact because it provided a strong opportunity to
+    demonstrate the practical use of algorithms and data structures while
+    building on an existing object-oriented application.
+  </p>
+
+  <p>
+    The original program already used vectors and class-based design, which
+    gave me a useful foundation for expanding the application rather than
+    simply correcting existing code. The enhancement required me to evaluate
+    limitations in the original design, choose appropriate data structures for
+    new functionality, and implement algorithms that improved both
+    functionality and organization.
+  </p>
+
+  <p>
+    The largest enhancement was the addition of tournament mode. Players can
+    now complete multiple games during one execution of the program while
+    cumulative statistics are maintained throughout the tournament.
+  </p>
+
+  <p>
+    This required restructuring the original program so that gameplay could be
+    executed repeatedly without losing tournament information. I separated
+    major responsibilities into reusable functions, allowing the game logic,
+    statistics processing, and leaderboard generation to operate independently.
+    This improved readability, maintainability, and future extensibility.
+  </p>
+
+  <h3>Data Structures and Algorithms</h3>
+
+  <p>
+    To manage tournament statistics efficiently, I introduced an
+    <code>unordered_map</code> containing a custom <code>PlayerStats</code>
+    structure for each player.
+  </p>
+
+  <p>Each player's record tracks:</p>
+
+  <ul>
+    <li>Games played</li>
+    <li>Tournament wins</li>
+    <li>Total chips won</li>
+  </ul>
+
+  <p>
+    An <code>unordered_map</code> was appropriate because player names can be
+    used as keys, providing efficient average constant-time lookup and update
+    operations. This is more suitable for maintaining player statistics than
+    repeatedly searching through a vector as tournament data grows.
+  </p>
+
+  <p>
+    This enhancement helped demonstrate the importance of selecting a data
+    structure based on the needs of the problem rather than using the same
+    container for every type of information.
+  </p>
+
+  <p>
+    Another major enhancement was the tournament leaderboard. Statistics
+    stored in the map are copied into a vector and sorted using the C++
+    Standard Library <code>std::sort</code> algorithm with a custom lambda
+    comparator.
+  </p>
+
+  <p>Players are ranked using three conditions:</p>
+
+  <ol>
+    <li>Total wins in descending order</li>
+    <li>Total chips won in descending order</li>
+    <li>Player name alphabetically when a tie remains</li>
+  </ol>
+
+  <p>
+    This combines multiple data structures with a sorting algorithm to
+    transform stored statistics into useful information for the player.
+  </p>
+
+  <h3>Reliability and Input Validation</h3>
+
+  <p>
+    I also strengthened the reliability of the application by improving input
+    validation.
+  </p>
+
+  <p>
+    The program safely rejects invalid player-count input before gameplay
+    begins and only accepts whole-number values representing at least three
+    players. This prevents malformed or unsupported input from disrupting the
+    game.
+  </p>
+
+  <p>
+    Although this was a smaller change than the tournament functionality, it
+    improved the overall robustness of the application and reinforced the
+    importance of defensive programming.
+  </p>
+
+  <h3>Skills and Course Outcomes</h3>
+
+  <p>
+    This enhancement demonstrates algorithmic problem solving, data structure
+    selection, object-oriented programming, modular design, input validation,
+    and use of the C++ Standard Library.
+  </p>
+
+  <p>
+    It demonstrates my ability to evaluate a limitation in an existing
+    application and design a solution using appropriate algorithms and data
+    structures. The use of an <code>unordered_map</code> for efficient
+    statistics management and a vector with <code>std::sort</code> for
+    leaderboard generation reflects deliberate choices based on the
+    responsibilities of each structure.
+  </p>
+
+  <p>
+    The enhancement also demonstrates professional technical communication
+    through documentation, code review, and explanation of design choices and
+    trade-offs.
+  </p>
+
+  <p>
+    Finally, the project demonstrates the use of C++, object-oriented
+    programming, Standard Template Library containers and algorithms, testing,
+    modular development, and GitHub version control to create a substantially
+    expanded software solution.
+  </p>
+
+  <h3>Reflection</h3>
+
+  <p>
+    Working through this enhancement reinforced the importance of selecting
+    the right data structure for a specific problem rather than forcing every
+    feature into the same implementation.
+  </p>
+
+  <p>
+    The original program only required a vector because its data existed for
+    the duration of a single game. Once tournament functionality was
+    introduced, player statistics needed to persist across multiple games and
+    be updated repeatedly. An <code>unordered_map</code> provided a much better
+    solution for that responsibility.
+  </p>
+
+  <p>
+    I also gained more experience using Standard Template Library algorithms,
+    particularly <code>std::sort</code> with a custom comparator, to organize
+    more complex data. Building the leaderboard showed how algorithms can turn
+    stored information into meaningful output rather than simply manipulating
+    values internally.
+  </p>
+
+  <p>
+    Refactoring the gameplay into reusable functions was another important
+    part of the enhancement. Separating gameplay, statistics updates, and
+    leaderboard generation made the application easier to understand and test
+    while also making future changes easier to implement.
+  </p>
+
+  <p>
+    One of the most valuable lessons from this project was seeing how a series
+    of focused architectural changes can significantly expand an existing
+    application. I did not need to rewrite the game from the beginning.
+    Instead, I was able to preserve the working original design and extend it
+    through reusable functions, additional data structures, and sorting logic.
+  </p>
+
+  <p>
+    The result transformed a single-game simulation into a tournament
+    application while demonstrating growth in algorithmic thinking, data
+    structure selection, software organization, and problem solving.
+  </p>
+
+  <div class="button-group">
+    <a
+      class="button secondary"
+      href="#algorithms"
+    >
+      Back to Algorithms and Data Structures
+    </a>
+  </div>
+</section>
 
     <section id="databases" class="section-card">
       <h2>Databases</h2>
